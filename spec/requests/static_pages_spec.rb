@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe "Static pages" do
-  let( :base_title ) { "Tutorial Sample App |" }
-    
+  let( :base_title ) { "Tutorial Sample App" }
+
   describe "Home page" do
-    let( :section_name ) { "About" }
+    let( :section_name ) { "Home" }
 
     before  do
       visit '/static_pages/home'
@@ -14,9 +14,12 @@ describe "Static pages" do
       page.should have_selector 'h1', :text => 'Sample App'
     end
 
-    it "should have '<%= section_name %>' in the title" do
-      page.should have_selector 'title',
-          :title => '#{base_title} #{section_name}'
+    it "should have the base title only" do
+      page.should have_selector 'title', :text => "#{base_title}"
+    end
+
+    it "should have not have the section name, 'Home'" do
+      page.should_not have_selector 'title', :text => "| #{section_name}"
     end
   end
 
@@ -27,13 +30,13 @@ describe "Static pages" do
       visit '/static_pages/help'
     end
 
-   it "should have the content '<%= section_name %>'" do
+   it "should have the content 'Help'" do
       page.should have_selector 'h1', :text => section_name
     end
 
-    it "should have '<%= section_name %>' in the title" do
+    it "should have 'Help' in the title" do
       page.should have_selector 'title',
-          :title => '#{base_title} #{section_name}'
+          :text => "#{base_title} | #{section_name}"
     end
   end 
   
@@ -44,13 +47,13 @@ describe "Static pages" do
       visit '/static_pages/about'
     end
 
-    it "should have the content '<%= section_name %>'" do
+    it "should have the content 'About'" do
       page.should have_selector 'h1', :text => section_name
     end
 
-    it "should have '<%= section_name %>' in the title" do
+    it "should have 'About' in the title" do
       page.should have_selector 'title',
-          :title => '#{base_title} #{section_name}'
+          :text => "#{base_title} | #{section_name}"
     end
   end
 
@@ -61,13 +64,13 @@ describe "Static pages" do
       visit '/static_pages/contact'
     end
 
-    it "should have the content '<%= section_name %>'" do
+    it "should have the content 'Contact'" do
       page.should have_selector 'h1', :text => section_name
     end
 
-    it "should have '<%= section_name %>' in the title" do
+    it "should have 'Contact' in the title" do
       page.should have_selector 'title',
-          :title => '#{base_title} #{section_name}'
+          :text => "#{base_title} | #{section_name}"
     end
   end
 
