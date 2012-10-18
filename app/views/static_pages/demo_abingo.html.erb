@@ -1,0 +1,13 @@
+<% provide( :title, 'Abingo' ) %>
+
+<h1>Demo Abingo</h1>
+<p>
+  Demo of Abingo
+  <ul>
+    <li>
+      <%= ab_test("clicked_to_dashboard", ['Dashboard  A', 'Dashboard B']) do |dashboard_text| %>
+        <%= link_to(dashboard_text, :bingo) %>
+      <% end %>
+    </li>
+  </ul>
+</p>
