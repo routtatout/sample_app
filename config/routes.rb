@@ -8,6 +8,10 @@ SampleApp::Application.routes.draw do
   match '/about', to: 'static_pages#about'
   match '/contact', :to => 'static_pages#contact'
 
+  match '/demo_abingo', to: 'static_pages#demo_abingo' 
+
+  match '/abingo(/:action(/:id))', to: 'abingo_dashboard', as: :bingo
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

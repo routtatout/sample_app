@@ -12,4 +12,7 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
+  def demo_abingo
+  end
+
 end
